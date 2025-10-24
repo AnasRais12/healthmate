@@ -1,0 +1,368 @@
+   // <BasicLayout routes={adminRoutes}>
+        //     <Box sx={{ pt: { xs: 8, sm: 3 } }} py={3} pt={8} >
+        //         {/* 🔹 Header */}
+        //         <Box
+        //             display="flex"
+        //             flexDirection={{ xs: "column", sm: "row" }}
+        //             justifyContent="space-between"
+        //             alignItems={{ xs: "flex-start", sm: "center" }}
+        //             gap={2}
+        //             mb={2}
+        //         >
+        //             <Typography variant="h5" fontWeight="bold">
+        //                 {routesName?.label || 'Users'}
+        //             </Typography>
+        //             <Button
+        //                 variant="contained"
+        //                 color="primary"
+        //                 fullWidth
+        //                 onClick={handleAddUserOpen}
+        //                 sx={{
+        //                     width: {
+        //                         xs: '100%',
+        //                         sm: 'auto',
+        //                     },
+        //                 }}
+        //             >
+        //                 Add User
+        //             </Button>
+        //         </Box>
+
+        //         {/* 🔄 Loading */}
+        //         {loading ? (
+        //             <CircularProgress />
+        //         ) : (
+        //             <Box
+        //                 sx={{
+        //                     width: '100%',
+        //                     overflowX: 'auto',
+        //                 }}
+        //             >
+        //                 <Box
+        //                     sx={{
+        //                         minWidth: 900,
+        //                     }}
+        //                 >
+        //                     <Paper elevation={1} sx={{ width: '100%' }}>
+        //                         <DataGrid
+        //                             rows={users}
+        //                             columns={columns}
+        //                             pageSize={10}
+        //                             autoHeight
+        //                             rowsPerPageOptions={[10, 25, 50]}
+        //                             getRowId={(row) => row._id}
+        //                             disableRowSelectionOnClick
+        //                             sx={{
+        //                                 '& .MuiDataGrid-root': {
+        //                                     border: 'none',
+        //                                 },
+        //                                 '& .MuiDataGrid-columnHeaderTitle': {
+        //                                     fontSize: {
+        //                                         xs: '14px',
+        //                                         md: '17px',
+        //                                     },
+        //                                 },
+        //                                 '& .MuiDataGrid-columnHeaders': {
+        //                                     backgroundColor: '#f5f5f5',
+        //                                     fontWeight: 'bold',
+        //                                 },
+        //                                 '& .MuiDataGrid-cell': {
+        //                                     display: 'flex',
+        //                                     alignItems: 'center',
+        //                                     pr: '10px',
+        //                                     whiteSpace: 'nowrap', // prevent text wrapping
+        //                                 },
+        //                                 '& .MuiDataGrid-virtualScroller': {
+        //                                     overflowX: 'auto !important', // ensure horizontal scroll
+        //                                 },
+        //                             }}
+        //                         />
+        //                     </Paper>
+        //                 </Box>
+        //             </Box>
+
+
+        //         )}
+
+        //         {/* Menu */}
+        //         <Menu
+        //             anchorEl={anchorEl}
+        //             open={open}
+        //             onClose={handleCloseMenu}
+        //             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        //             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        //         >
+        //             <MenuItem onClick={handleEdit}>Edit</MenuItem>
+        //             <MenuItem onClick={handleDelete}>Delete</MenuItem>
+        //         </Menu>
+
+        //         {/* ✏️ Edit Dialog */}
+        //         <Dialog open={editDialogOpen} onClose={() => setEditDialogOpen(false)}>
+        //             <DialogTitle>Edit User</DialogTitle>
+        //             <DialogContent>
+        //                 <TextField
+        //                     label="Name"
+        //                     value={editedName}
+        //                     onChange={(e) => setEditedName(e.target.value)}
+        //                     fullWidth
+        //                     sx={{ mt: 1 }}
+        //                 />
+        //             </DialogContent>
+        //             <DialogActions>
+        //                 <Button onClick={() => setEditDialogOpen(false)}>Cancel</Button>
+        //                 <Button onClick={handleEditSave} variant="contained">
+        //                     Save
+        //                 </Button>
+        //             </DialogActions>
+        //         </Dialog>
+
+        //         {/* ❌ Delete Dialog */}
+        //         <Dialog open={deleteDialogOpen} onClose={() => setDeleteDialogOpen(false)}>
+        //             <DialogTitle>Delete User</DialogTitle>
+        //             <DialogContent>
+        //                 <Typography>
+        //                     Are you sure you want to delete <strong>{selectedUser?.username}</strong>?
+        //                 </Typography>
+        //             </DialogContent>
+        //             <DialogActions>
+        //                 <Button onClick={() => setDeleteDialogOpen(false)}>Cancel</Button>
+        //                 <Button onClick={handleDeleteConfirm} color="error" variant="contained">
+        //                     Delete
+        //                 </Button>
+        //             </DialogActions>
+        //         </Dialog>
+        //         <Dialog open={addUserModalOpen} onClose={handleAddUserClose}>
+        //             <DialogTitle>Add New User</DialogTitle>
+        //             <DialogContent>
+        //                 <TextField
+        //                     label="Name"
+        //                     fullWidth
+        //                     sx={{ mt: 1 }}
+        //                     value={newUser.name}
+        //                     onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
+        //                 />
+        //                 <TextField
+        //                     label="Email"
+        //                     fullWidth
+        //                     sx={{ mt: 2 }}
+        //                     value={newUser.email}
+        //                     onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+        //                 />
+        //                 <TextField
+        //                     label="Phone"
+        //                     fullWidth
+        //                     sx={{ mt: 2 }}
+        //                     value={newUser.phone}
+        //                     onChange={(e) => setNewUser({ ...newUser, phone: e.target.value })}
+        //                 />
+        //             </DialogContent>
+        //             <DialogActions>
+        //                 <Button onClick={handleAddUserClose}>Cancel</Button>
+        //                 <Button variant="contained" onClick={handleAddUserSubmit}>Add</Button>
+        //             </DialogActions>
+        //         </Dialog>
+        //     </Box>
+        // </BasicLayout>
+
+
+
+
+
+
+
+        // src/theme/uniqueTheme.js
+import { createTheme } from '@mui/material/styles';
+
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#1976d2', // Professional blue
+    },
+    secondary: {
+      main: '#9c27b0', // Subtle purple
+    },
+    background: {
+      default: '#f5f5f5', // Light neutral background
+      paper: '#ffffff', // Plain white paper for clarity
+    },
+    text: {
+      primary: '#212121', // Dark text
+      secondary: '#616161', // Gray for secondary text
+    },
+  },
+  typography: {
+    fontFamily: 'Poppins, sans-serif',
+    button: {
+      textTransform: 'none',
+      fontSize: '16px',
+      fontWeight: 600,
+    },
+    body1: {
+      fontSize: '15px',
+    },
+  },
+  components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: 12,
+          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          borderRadius: 12,
+          fontSize: '16px',
+          fontWeight: 600,
+          padding: '12px 24px',
+          background: 'linear-gradient(90deg, #1976d2 0%, #9c27b0 100%)',
+          color: '#fff',
+          '&:hover': {
+            background: 'linear-gradient(90deg, #1565c0 0%, #7b1fa2 100%)',
+            transform: 'scale(1.05)',
+            transition: 'all 0.3s ease',
+          },
+          [theme.breakpoints.down('sm')]: {
+            padding: '8px 16px',
+            fontSize: '14px',
+          },
+        }),
+      },
+    },
+    MuiDataGrid: {
+      styleOverrides: {
+        root: {
+          border: 'none',
+          borderRadius: 12,
+        },
+        columnHeaders: {
+          background: 'linear-gradient(90deg, #e0e0e0 0%, #bdbdbd 100%)',
+          color: '#212121',
+          fontWeight: 'bold',
+        },
+        cell: ({ theme }) => ({
+          fontSize: '14px',
+          [theme.breakpoints.up('md')]: {
+            fontSize: '16px',
+          },
+        }),
+      },
+    },
+  },
+});
+
+export default lightTheme;
+
+
+
+
+
+
+
+
+
+
+<AppBar
+  position="fixed"
+  elevation={0}
+  sx={{
+    width: "100%",
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.text.primary,
+    borderBottom: `1px solid ${theme.palette.divider}`,
+  }}
+>
+  <Toolbar
+    sx={{
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      px: { xs: 2, sm: 3 },
+      py: 1,
+    }}
+  >
+    {/* 🔹 Left Side: Logo + Menu Icon */}
+    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+      <IconButton onClick={handleDrawerToggle} edge="start" sx={{ mr: 1 }}>
+        <Menu />
+      </IconButton>
+      <Box component="img" src="/logo.svg" alt="Logo" sx={{ height: 32 }} />
+    </Box>
+
+    {/* 🔸 Right Side: Search + Icons */}
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: 1.5,
+        flexWrap: "wrap",
+        justifyContent: "flex-end",
+        width: "100%",
+        maxWidth: { xs: "100%", sm: "auto" },
+      }}
+    >
+      {/* 🔍 Search Bar */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          px: 1.5,
+          py: 0.5,
+          border: `1px solid ${theme.palette.divider}`,
+          borderRadius: 2,
+          backgroundColor: theme.palette.background.default,
+          maxWidth: { xs: "100%", sm: "300px" },
+          flex: 1,
+        }}
+      >
+        <Search sx={{ fontSize: 20, mr: 1, color: theme.palette.text.secondary }} />
+        <InputBase
+          placeholder="Search..."
+          fullWidth
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </Box>
+
+      {/* 🔔 Notification Icon */}
+      <IconButton color="inherit">
+        <Notifications />
+      </IconButton>
+
+      {/* 🌙 / ☀️ Mode Toggle */}
+      <IconButton color="inherit" onClick={() => setMode(mode === 'Light' ? 'Dark' : 'Light')}>
+        {mode === 'Light' ? <WbSunnyIcon /> : <DarkModeIcon />}
+      </IconButton>
+
+      {/* 👤 Avatar */}
+      <Avatar
+        src={user.image || undefined}
+        sx={{
+          border: user.role === 'admin' ? '2px solid gold' : '2px solid lightblue',
+          boxShadow: user.role === 'admin' ? '0 0 8px gold' : 'none',
+          bgcolor: user.image ? 'transparent' : (user.role === 'admin' ? 'gold' : 'lightblue'),
+          color: '#000',
+          fontWeight: 'bold',
+        }}
+      >
+        {!user.image && user.username?.[0]?.toUpperCase()}
+        {user.role === 'admin' && (
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: 0,
+              right: 0,
+              backgroundColor: 'gold',
+              borderRadius: '50%',
+              width: 12,
+              height: 12,
+            }}
+          />
+        )}
+      </Avatar>
+    </Box>
+  </Toolbar>
+</AppBar>

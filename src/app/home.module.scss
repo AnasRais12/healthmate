@@ -1,0 +1,13 @@
+$primary-color: #0070f3;
+
+.heading {
+  color: $primary-color;
+  font-size: 2rem;
+  text-align: center;
+
+  .child1 {
+    font-size: 24px;
+    color: rebeccapurple;
+    margin-bottom: 10px;
+  }
+}
