@@ -20,6 +20,7 @@ import { AddVitalsService, updateVitalService } from "@/service/vitalsService";
 import { RxCross1 } from "react-icons/rx";
 import CustomTable from "../layout/CustomTable";
 import { MoreVert } from "@mui/icons-material";
+import CSpinner from "../common/CSpinner";
 
 
 export default function Vitals() {
@@ -37,7 +38,7 @@ export default function Vitals() {
         successMessage: { title: 'Vitals!', text: 'Add Vitals', buttonText: 'Ok', },
         modalClose: () => setShowUploadReportForm(false)
     });
-    const { editloading, handleSubmit: handleEditForm, } = useFormHandler({
+    const { loading: editLoading, handleSubmit: handleEditForm, } = useFormHandler({
         apiFunction: (data) =>
             dispatch(updateVitalService(data)),
         successMessage: { title: 'Vitals!', text: 'Updated Vitals', buttonText: 'Ok', },
@@ -211,7 +212,7 @@ export default function Vitals() {
 
 
                                             <Button disabled={!isValid} type="submit" variant="contained" size="large">
-                                                {loading ? "Uploading..." : "Upload Report"}
+                                                {loading ? <CSpinner /> : "Add Vital"}
                                             </Button>
 
 
@@ -240,7 +241,7 @@ export default function Vitals() {
 
 
                                             <Button disabled={!isValid} type="submit" variant="contained" size="large">
-                                                {editloading ? "Upadating.." : "Update Report"}
+                                                {editLoading ? <CSpinner /> : "Edit Vital"}
                                             </Button>
 
 

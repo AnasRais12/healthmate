@@ -11,8 +11,8 @@ import ValidatedTextField from '../common/ValidatedTextField';
 import useFormHandler from '@/hooks/useFormHandler';
 import AlertModal from '../modal/AlertModal';
 import { SidebarWrapper } from '../layout/SidebarWrapper';
-import { COOKIE_NAME_PRERENDER_BYPASS } from 'next/dist/server/api-utils';
 import Cookies from 'js-cookie';
+import CSpinner from '../common/CSpinner';
 export const ProfileSetting = () => {
     const { dispatch, theme,router   } = useAppUtils()
     const { register, handleSubmit, control, errors, isValid, reset } = useReactFormUtils(ProfileFormSchema);
@@ -273,7 +273,7 @@ export const ProfileSetting = () => {
                                                 Cancel
                                             </Button>
                                             <Button type="submit" variant="contained" sx={{ py: 0.5, mt: { xs: 0, sm: 3 } }}>
-                                                {loading ? "Loading...." : "Save Changes"}
+                                                {loading ? <CSpinner /> : "Save Changes"}
                                             </Button>
                                         </Box>
                                     </>
