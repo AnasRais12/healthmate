@@ -12,8 +12,10 @@ axiosInstance.interceptors.request.use(
     // Check if token is in localStorage (or use cookies if you prefer)
     const token = getToken(); // or 'accessToken', based on your naming
     config.headers.Authorization = `Bearer ${token}`;
-    if (config?.data && config?.data?.file instanceof File) {
+    console.log(config," headers");
+    if (config?.data && config?.data?.file instanceof File || config?.data?.url == "/api/v1/users/updateProfile") {
       config.headers["Content-Type"] = "multipart/form-data";
+
     }
     else {
       config.headers["Content-Type"] = "application/json";

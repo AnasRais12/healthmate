@@ -86,13 +86,13 @@ const Banner = (props) => {
                     {props?.text}
                 </h1>
                 <button
-                    className="rounded-full relative bg-white p-2 "
+                    className="rounded-full relative bg-white   "
                     onClick={() => router.push('/profile')}
                 >
                     <img
                         src={userInfo?.avatar || "/default-avatar.png"} // fallback image
                         alt="User Avatar"
-                        className="md:w-[30px] md:h-[30px] w-[30px] h-[30px] rounded-full object-cover"
+                        className="md:w-[40px] md:h-[40px] w-[40px] h-[40px] rounded-full object-cover"
                     />
                     <span className="absolute top-0 right-0 w-2 h-2  rounded-full"></span>
                 </button>

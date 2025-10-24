@@ -146,7 +146,7 @@ export default function UploadReport() {
                                     className="flex flex-col items-center justify-center border-2 border-dashed rounded-2xl p-6 cursor-pointer hover:bg-gray-50 transition"
                                 >
                                     <CloudUpload className="text-blue-500 mb-2" fontSize="large" />
-                                    <Typography variant="body2" color="text.secondary">
+                                    <Typography variant="body2" color="text.primary">
                                         {file ? file.name : "Click to upload PDF or Image"}
                                     </Typography>
                                     <input

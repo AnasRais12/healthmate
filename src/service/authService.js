@@ -62,7 +62,6 @@ export const signInUser = createAsyncThunk(
 export const updateProfile = createAsyncThunk(
     "user/updateProfile",
     async ({ email, username, selectedImage }) => {
-        console.log(selectedImage, "selectedImage")
         const formData = new FormData();
         formData.append("email", email);
         formData.append("username", username);
@@ -77,7 +76,6 @@ export const updateProfile = createAsyncThunk(
                 formData,
                 (resData) => {
                     payload = resData?.data
-                    console.log(resData, 'resData os here ');
                 }
             );
             return payload

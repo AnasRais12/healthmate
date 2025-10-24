@@ -15,7 +15,10 @@ const NavItem = ({ icon, title, link, subItems }) => {
 
     const { setSidebarOpen } = GlobalDetails()
     const [isOpen, setIsOpen] = useState(false);
-    const isActive = pathname === link || (subItems && subItems.some(item => pathname === item.link));
+    const isActive =
+  pathname === link ||
+  (subItems && subItems.some(item => pathname === item.link)) ||
+  (link === "/report" && pathname.startsWith("/view"));
 
     return (
         <div className="mx-2 mb-[0.6rem]">

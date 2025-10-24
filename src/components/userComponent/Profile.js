@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { ProfileFormSchema } from '@/validation/FormSchema';
 import { ProfileSettings } from '@/constant/formField';
-import { Avatar, Box, Button, Grid, IconButton, TextField, Typography } from '@mui/material';
+import { Alert, Avatar, Box, Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import { useAppUtils, useReactFormUtils, useReduxState } from '@/hooks/useAppUtils';
 import { CameraAlt, } from '@mui/icons-material';
 import ChangePassword from './ChangePassword';
@@ -11,8 +11,10 @@ import ValidatedTextField from '../common/ValidatedTextField';
 import useFormHandler from '@/hooks/useFormHandler';
 import AlertModal from '../modal/AlertModal';
 import { SidebarWrapper } from '../layout/SidebarWrapper';
+import { COOKIE_NAME_PRERENDER_BYPASS } from 'next/dist/server/api-utils';
+import Cookies from 'js-cookie';
 export const ProfileSetting = () => {
-    const { dispatch, theme } = useAppUtils()
+    const { dispatch, theme,router   } = useAppUtils()
     const { register, handleSubmit, control, errors, isValid, reset } = useReactFormUtils(ProfileFormSchema);
     const { loading, handleSubmit: handleForm, } = useFormHandler({
         apiFunction: ({ username, email, selectedImage }) => dispatch(updateProfile({ username, email, selectedImage })),
@@ -24,7 +26,7 @@ export const ProfileSetting = () => {
         changepasswordModal: false,
     });
     const { userInfo } = useReduxState()
-    const [selectedImage, setSelectedImage] = useState(userInfo?.profileAvatar);
+    const [selectedImage, setSelectedImage] = useState(userInfo?.avatar);
     const [preview, setPreview] = useState(userInfo?.avatar || "");
 
 
@@ -58,9 +60,7 @@ export const ProfileSetting = () => {
     };
 
     const onSubmit = async (data) => {
-        console.log(data, "data is here ")
         const { username, email } = data
-        console.log(selectedImage, "selectedImage is here ")
         handleForm({ username, email, selectedImage });
         if (data?.username == userInfo?.username && data?.email == userInfo?.email && selectedImage == userInfo?.avatar) {
             await AlertModal({
@@ -75,10 +75,23 @@ export const ProfileSetting = () => {
             handleForm({ ...data, userId: userInfo?.id, avatar: selectedImage });
 
         }
-        if (selectedImage === userInfo?.profileAvatar) {
+        if (selectedImage === userInfo?.avatar) {
             handleForm({ ...data, userId: userInfo?.id, });
         }
     };
+    const handleLogout = () => {
+              localStorage.removeItem("token");
+  localStorage.removeItem("persist:root");
+  Cookies.remove("role")
+  AlertModal({
+    icon: 'success',
+    title: 'Logged Out',
+    text: 'You have been logged out successfully.',
+    buttonText: 'Ok',
+  });
+  router.push('/signin');
+       
+};
 
     return (
         <SidebarWrapper headerText={'Profile'}>
@@ -211,7 +224,7 @@ export const ProfileSetting = () => {
                                 ))}
                                 {!UserSettingStates?.isEditing && (
                                     <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
-                                        <label className="block text-lg lg:text-sm font-medium mb-1">
+                                        <label className="block text-lg lg:text-sm font-medium mb-3">
                                             Password
                                         </label>
 
@@ -220,6 +233,13 @@ export const ProfileSetting = () => {
                                             size="small"
                                             value={"*********"}
                                         />
+                                        <Button sx={{mt:2}}
+        variant="contained"
+        color="error"
+        onClick={handleLogout}
+      >
+        Logout
+      </Button>
                                     </Box>
                                 )}
 
@@ -248,7 +268,7 @@ export const ProfileSetting = () => {
                                         >
                                             Change Password
                                         </Button>
-                                        <Box sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', sm: 'row' }, justifyContent: "end", gap: 1 }}>
+                                        <Box sx={{ display: 'flex', flexDirection: { xs: 'column-reverse', sm: 'row' }, justifyContent: "end", gap: 2 }}>
                                             <Button onClick={() => setUserSettingState((prev) => ({ ...prev, isEditing: false })) && reset()} type="submit" variant="contained" sx={{ mt: { xs: 0, sm: 3 }, py: 0.5, bgcolor: "red" }}>
                                                 Cancel
                                             </Button>

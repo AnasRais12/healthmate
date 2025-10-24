@@ -34,7 +34,7 @@ const CustomTable = ({
 }) => {
     const [deleteUser, setDeleteUser] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const { theme, dispatch } = useAppUtils()
+    const { theme, dispatch ,router} = useAppUtils()
     const [filteredData, setFilteredData] = useState(data);
 
     useEffect(() => {
@@ -230,7 +230,7 @@ const CustomTable = ({
                             {!footer && (
                                 <Button
                                     variant="contained"
-                                    // onClick={() => router.push('/vitals')}
+                                    onClick={() => title === "Vital" ? router.push('/vitals') : router.push('/report') }
                                     sx={{
                                         borderRadius: '12px',
                                         px: 4,

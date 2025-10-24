@@ -54,10 +54,20 @@ export default function ViewReport() {
             setLoading(true);
             console.log("hello")
             const response = await dispatch(deleteFileByIdService({ id: file?._id }));
-            AlertModal({ type: "success", message: "Report deleted successfully." });
+             AlertModal({
+                            icon: 'success',
+                            title: 'Report Deleted!',
+                            text: 'The report has been successfully deleted.',
+                            buttonText: 'Ok',
+                        });
             router.push('/dashboard');
         } catch (error) {
-            AlertModal({ type: "error", message: error?.message || "Something Went Wrong" });
+             AlertModal({
+                            icon: 'error',
+                            title: 'Error Deleting Report!',
+                            text: error?.message || 'Something Went Wrong',
+                            buttonText: 'Ok',
+                        });
 
         } finally {
             setDeleteUser(false);

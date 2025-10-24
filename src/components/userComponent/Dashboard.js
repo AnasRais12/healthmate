@@ -230,7 +230,7 @@ export default function Dashboard() {
                         </Typography>
 
                         <Button
-                            onClick={() => router.push('/vital')}
+                            onClick={() => router.push('/vitals')}
                             variant="contained"
                             sx={{
                                 backgroundColor: theme.palette.primary.main,
