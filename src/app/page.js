@@ -9,7 +9,7 @@ const page = () => {
   return (
     <>
     <Home /> 
-      {/* {!userInfo?.id ? <Home /> : <Dashboard />} */}
+      {!userInfo?.id ? <Home /> : <Dashboard />}
     </>
   )
 }

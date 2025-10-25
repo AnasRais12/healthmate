@@ -39,7 +39,8 @@ export const signInUser = createAsyncThunk(
                 (resData) => {
                     if (resData?.data?.user || resData?.data?.token) {
                         data = { user: resData?.data?.user, token: resData?.data?.token }
-                        Cookies.set('role', resData?.data?.user?.role);
+                        Cookies.set('role', resData?.data?.user?.role, { expires: 7 });
+
                         localStorage.setItem('token', resData?.data?.token);
 
 
