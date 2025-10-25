@@ -8,14 +8,14 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "/assets/healthmate.jpg",
-      "sizes": "192x192",
-      "type": "image/jpg"
+      "src": "/windows11/Square150x150Logo.scale-400.png",
+      "sizes": "150x150",
+      "type": "image/png"
     },
     {
-      "src": "/assets/healthmate.jpg",
-      "sizes": "512x512",
-      "type": "image/jpg"
+      "src": "/windows11/LargeTile.scale-400.png",
+      "sizes": "400x400",
+      "type": "image/png"
     }
   ]
 }
