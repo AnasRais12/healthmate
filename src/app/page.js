@@ -8,7 +8,8 @@ const page = () => {
   const { userInfo } = useReduxState()
   return (
     <>
-      {!userInfo?.id ? <Home /> : <Dashboard />}
+    <Home /> 
+      {/* {!userInfo?.id ? <Home /> : <Dashboard />} */}
     </>
   )
 }
