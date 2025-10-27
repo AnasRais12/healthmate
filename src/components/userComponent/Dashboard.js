@@ -159,9 +159,12 @@ export default function Dashboard() {
                                 ? getTimeDifference(combined[0]?.createdAt)
                                 : 'No Data',
                         },
-                        {
-                            label: `Latest ${combined[0]?.type ? 'AI Insight' : 'Vitals'}`,
-                            value: `${combined[0]?.type ? combined[0]?.filename - combined[0]?.title : `Manual Vitals`}`
+    {
+                            label: `Last Vital`,
+                            value: `
+                              ${combined[0]?.type === "Vitals"
+                                    ? "Manual Vitals"
+                                    : "No vital records available"}`
                         },
                     ].map((item, i) => (
                         <Card
