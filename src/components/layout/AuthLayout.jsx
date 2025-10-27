@@ -99,7 +99,7 @@ function Authlayout({ formFields = [], schemas, loading, authVariant, background
             </Box>
 
             {/* Right Form Section */}
-            <Box
+            {/* <Box
                 width={{ xs: '100%', lg: '50%', }}
                 sx={{
                     display: 'flex',
@@ -111,6 +111,19 @@ function Authlayout({ formFields = [], schemas, loading, authVariant, background
                     overflowY: { xs: 'auto', lg: 'auto' },
                     maxHeight: { lg: '100vh' },
                     minHeight: { lg: '100vh' },
+                }}
+            > */}
+               <Box
+                width={{ xs: '100%', lg: '50%', }}
+
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: { xs: 'flex-start', sm: 'center' },
+                    px: { xs: 0, sm: 6, md: 8, lg: 0 },
+                    py: { xs: 0, sm: 6 },
+                    overflowY: { xs: 'auto', lg: 'auto' },
+                    height: { xs: 'auto', lg: '100vh' },
                 }}
             >
                 <Paper
