@@ -1,14 +1,14 @@
 "use client"
 import { useEffect, useState } from "react";
-import useIsPWA from "@/hooks/useIsPWA";
-import PWAHome from "@/components/PWAHome";
+import PWAHome from "@/components/userComponent/PWAHome";
 import Home from '@/components/userComponent/Home'
 import { useReduxState } from '@/hooks/useAppUtils'
 import Dashboard from '@/components/userComponent/Dashboard'
+import useIsPWA from "@/hooks/useIsPWA";
 
 const page = () => {
   const { userInfo } = useReduxState()
-    const isPWA = useIsPWA();
+  const isPWA = useIsPWA();
   const [showHome, setShowHome] = useState(false);
 
   useEffect(() => {
