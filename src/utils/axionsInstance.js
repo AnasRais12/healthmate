@@ -13,11 +13,9 @@ axiosInstance.interceptors.request.use(
     const token = getToken(); // or 'accessToken', based on your naming
     config.headers.Authorization = `Bearer ${token}`;
     console.log(config," headers");
-    if (config?.data && config?.data?.file instanceof File || config?.data?.url == "/api/v1/users/updateProfile") {
+    if (config?.url === '/api/upload' || config?.url === "/api/v1/users/updateProfile") {
       config.headers["Content-Type"] = "multipart/form-data";
-
-    }
-    else {
+    } else {
       config.headers["Content-Type"] = "application/json";
     }
 
