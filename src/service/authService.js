@@ -14,7 +14,7 @@ export const signUpUser = createAsyncThunk(
                 { email, password, username },
                 (resData) => {
                     data = { user: resData?.data }
-                    console.log(resData, "resData");
+              
 
                 }
 
@@ -96,7 +96,7 @@ export async function changePasswordService({ newPassword, password, }) {
             postApiCall?.authFlow.changePassword,
             { newPassword, currentPassword: password },
             (resData) => {
-                console.log(resData)
+            
                 data = { data: true }
 
             }
