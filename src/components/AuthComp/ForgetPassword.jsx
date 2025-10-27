@@ -1,4 +1,4 @@
-'use client';
+  'use client';
 import React, { useState } from 'react';
 import {
   Box,
@@ -44,11 +44,11 @@ export const ForgotPassword = ({ setForgetPasswordModal }) => {
       response = res?.data?.data
 
       if (response?.url) {
-        AlertModal({
+  AlertModal({
           icon: 'success',
-          title: 'Reset Link Sent',
-          text: res?.data?.message,
-          buttonText: 'OK',
+          title: 'Success!',
+          text: "Click below to reset your password now.",
+          buttonText: 'Reset Password',
         })
         router.push(response?.url)
       }
