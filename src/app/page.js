@@ -8,7 +8,7 @@ const page = () => {
   const { userInfo } = useReduxState()
   return (
     <>
-    <Home /> 
+
       {!userInfo?.id ? <Home /> : <Dashboard />}
     </>
   )
