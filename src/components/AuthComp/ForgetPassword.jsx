@@ -30,22 +30,30 @@ import { postRequest } from '@/service/apiFunction';
 import { postApiCall } from '@/service/apiService';
 import Authlayout from '../layout/AuthLayout';
 import { forgetSchema } from '@/validation/authSchema';
+import { useAppUtils } from '@/hooks/useAppUtils';
 export const ForgotPassword = ({ setForgetPasswordModal }) => {
+  const { router } = useAppUtils()
   const [loading, setLoading] = useState(false);
   const onSubmit = async (data, reset) => {
     setLoading(true);
     try {
+      let response;
       const { email } = data;
-      await postRequest(postApiCall?.authFlow.forget, { email }, (resData) => {
+      const res = await postRequest(postApiCall?.authFlow.forget, { email }, (resData) => {
+      });
+      response = res?.data?.data
+
+      if (response?.url) {
         AlertModal({
           icon: 'success',
-          title: 'Sent Code',
-          text: resData?.message,
+          title: 'Reset Link Sent',
+          text: res?.data?.message,
           buttonText: 'OK',
-        }).then(() => {
-          setForgetPasswordModal(false)
-        });
-      });
+        })
+        router.push(response?.url)
+      }
+
+
     } finally {
       setLoading(false);
       reset()
