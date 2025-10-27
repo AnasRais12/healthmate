@@ -8,7 +8,8 @@ const page = () => {
   return (
     <>
 
-      {!userInfo?.id ? <Home /> : <Dashboard />}
+      {userInfo?._id ?  <Dashboard /> : <Home />}
+ 
     </>
   )
 }
