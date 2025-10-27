@@ -12,8 +12,8 @@ export const Signup = () => {
         apiFunction: ({ email, password, username }) =>
             dispatch(signUpUser({ email, password, username })),
         successMessage: {
-            title: 'Verification Email Sent',
-            text: 'Please check your email.',
+            title: ' Registered',
+            text: 'Registeration Successfully',
             buttonText: 'Ok',
             navigate: 'signin'
         },
