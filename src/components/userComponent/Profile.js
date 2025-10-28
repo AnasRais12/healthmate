@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { ProfileFormSchema } from '@/validation/FormSchema';
-import { signOut} from "next-auth/react";
+import { signOut, useSession} from "next-auth/react";
 import { ProfileSettings } from '@/constant/formField';
 import { Alert, Avatar, Box, Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import { useAppUtils, useReactFormUtils, useReduxState } from '@/hooks/useAppUtils';
@@ -15,6 +15,7 @@ import { SidebarWrapper } from '../layout/SidebarWrapper';
 import Cookies from 'js-cookie';
 import CSpinner from '../common/CSpinner';
 export const ProfileSetting = () => {
+    const session = useSession();
     const { dispatch, theme,router   } = useAppUtils()
     const { register, handleSubmit, control, errors, isValid, reset } = useReactFormUtils(ProfileFormSchema);
     const { loading, handleSubmit: handleForm, } = useFormHandler({
@@ -30,7 +31,6 @@ export const ProfileSetting = () => {
     const [selectedImage, setSelectedImage] = useState(userInfo?.avatar);
     const [preview, setPreview] = useState(userInfo?.avatar || "");
 
-
     const fieldsWithFixedValue = ProfileSettings.map((field) => {
         switch (field.name) {
             case "username":
@@ -41,10 +41,13 @@ export const ProfileSetting = () => {
                     };
             case "email":
                 return UserSettingStates.isEditing
-                    ? { ...field, defaultValue: userInfo?.email || "Not Set" }
+                    ? { ...field,  defaultValue: userInfo?.email || "Not Set" }
                     : {
-                        ...field, fixedValue: userInfo?.email || "Not Set"
-                    };
+  ...field,
+  ...(session?.data?.user
+    ? { fixedValue: userInfo?.email || "Not Set" }
+    : { defaultValue: userInfo?.email || "Not Set" })
+};
 
             default:
                 return field;
