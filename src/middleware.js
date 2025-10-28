@@ -26,13 +26,13 @@ export async function middleware(request) {
   }
 
   // Parse cookies from the request
-  const role = request.cookies.get('role')?.value;
+  // const role = request.cookies.get('role')?.value;
+  //   const token = request.cookies.get('role')?.value;
 
   // If no role is found in cookies, redirect to signin
-  if (!role) {
-    return NextResponse.redirect(new URL('/signin', request.url));
-  }
-
+//  if (!role && !token) {
+//   return NextResponse.redirect(new URL('/signin', request.url));
+// }
   // Check access for admin routes
   if (adminRoutes.includes(pathname)) {
     if (role !== 'admin') {
