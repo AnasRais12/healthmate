@@ -14,7 +14,7 @@ export const signUpUser = createAsyncThunk(
                 { email, password, username },
                 (resData) => {
                     data = { user: resData?.data }
-              
+
 
                 }
 
@@ -45,6 +45,33 @@ export const signInUser = createAsyncThunk(
 
 
 
+                    }
+                }
+
+            );
+            await dispatch(getVitalsService({ userId: data?.user?._id }))
+            await dispatch(getFilesService({ userId: data?.user?._id }))
+            return data
+        }
+        catch (err) {
+            throw new Error(err?.message);
+        }
+    }
+);
+
+export const googleUser = createAsyncThunk(
+    "users/googleUser",
+    async ({ email, }, { dispatch }) => {
+        let data;
+        try {
+            await postRequest(
+                postApiCall?.authFlow.googleLogin,
+                { email, },
+                (resData) => {
+                    if (resData?.data?.user || resData?.data?.token) {
+                        data = { user: resData?.data?.user, token: resData?.data?.token }
+                        Cookies.set('role', resData?.data?.user?.role, { expires: 7 });
+                        localStorage.setItem('token', resData?.data?.token);
                     }
                 }
 
@@ -96,7 +123,7 @@ export async function changePasswordService({ newPassword, password, }) {
             postApiCall?.authFlow.changePassword,
             { newPassword, currentPassword: password },
             (resData) => {
-            
+
                 data = { data: true }
 
             }
