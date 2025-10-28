@@ -224,6 +224,7 @@ export default function Dashboard() {
                             justifyContent: 'center',
                             alignItems: 'center',
                             flexDirection: 'column',
+                                 py:2,
                             gap: 2,
                             textAlign: 'center',
                         }}
@@ -243,11 +244,8 @@ export default function Dashboard() {
                                 borderRadius: '12px',
                                 px: 4,
                                 py: 1.5,
-                                boxShadow: '0 4px 10px rgba(25,118,210,0.25)',
                                 transition: '0.3s',
-                                '&:hover': {
-                                    boxShadow: '0 6px 14px rgba(25,118,210,0.35)',
-                                },
+                               
                             }}
                         >
                             Add Vitals
@@ -265,6 +263,7 @@ export default function Dashboard() {
                     color: theme.palette.text.primary,
                     borderRadius: 3,
                     mt: 10,
+                    mb:2,
                     p: { xs: 1, sm: 2 },
 
                 }}
@@ -283,6 +282,7 @@ export default function Dashboard() {
                         sx={{
                             display: 'flex',
                             justifyContent: 'center',
+                            py:2,
                             alignItems: 'center',
                             flexDirection: 'column',
                             gap: 2,
@@ -304,11 +304,8 @@ export default function Dashboard() {
                                 borderRadius: '12px',
                                 px: 4,
                                 py: 1.5,
-                                boxShadow: '0 4px 10px rgba(25,118,210,0.25)',
                                 transition: '0.3s',
-                                '&:hover': {
-                                    boxShadow: '0 6px 14px rgba(25,118,210,0.35)',
-                                },
+                              
                             }}
                         >
                             Upload Report
