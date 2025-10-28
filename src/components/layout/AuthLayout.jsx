@@ -11,6 +11,7 @@ import {
     Paper,
     useMediaQuery,
 } from '@mui/material';
+import {  signIn} from "next-auth/react";
 import { FcGoogle } from 'react-icons/fc';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -243,7 +244,11 @@ function Authlayout({ formFields = [], schemas, loading, authVariant, background
                         <>
                             <Divider sx={{ my: 4 }}>Or</Divider>
 
-                            <Button
+<Button
+  onClick={() =>
+    signIn("google", { callbackUrl: "/" })
+  }
+                                
                                 variant="outlined"
                                 startIcon={<FcGoogle size={22} />}
                                 fullWidth
