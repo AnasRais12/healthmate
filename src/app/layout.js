@@ -4,7 +4,7 @@ import { CustomThemeProvider } from '@/theme/ThemeContext';
 import PersistProvider from '@/components/layout/PersistProvider';
 import { GlobalProvider } from '@/context/commonContext';
 import { SearchProvider } from '@/context/commonContext';
-
+import AuthProvider from '@/components/layout/AuthProvider';
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'], // select what you need
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        
+        <AuthProvider>
         <SearchProvider>
           <GlobalProvider>
             <PersistProvider>
@@ -29,6 +29,7 @@ export default function RootLayout({ children }) {
             </PersistProvider>
           </GlobalProvider>
         </SearchProvider>
+        </AuthProvider>
       </body>
     </html>
   );
