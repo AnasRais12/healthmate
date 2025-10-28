@@ -61,12 +61,12 @@ export const signInUser = createAsyncThunk(
 
 export const googleUser = createAsyncThunk(
     "users/googleUser",
-    async ({ email, }, { dispatch }) => {
+    async ({ email,username,avatar }, { dispatch }) => {
         let data;
         try {
             await postRequest(
                 postApiCall?.authFlow.googleLogin,
-                { email, },
+                { email,username,avatar },
                 (resData) => {
                     if (resData?.data?.user || resData?.data?.token) {
                         data = { user: resData?.data?.user, token: resData?.data?.token }
