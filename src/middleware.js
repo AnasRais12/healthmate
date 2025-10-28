@@ -27,10 +27,11 @@ export async function middleware(request) {
 
   // Parse cookies from the request
   const role = request.cookies.get('role')?.value;
-    // const token = request.cookies.get('role')?.value;
+  
+    const token = request.cookies.get('__Host-next-auth.csrf-token')?.value;
 
   // If no role is found in cookies, redirect to signin
- if (!role) {
+ if (!role && !token) {
   return NextResponse.redirect(new URL('/signin', request.url));
 }
   // Check access for admin routes
