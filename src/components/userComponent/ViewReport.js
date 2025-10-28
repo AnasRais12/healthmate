@@ -155,22 +155,15 @@ console.log(file,"FILE IS HERE ")
                                             </Button>
                                         </>
                                     ) : file?.type?.includes("pdf") ? (
-     <object
-    data={file.url}
-    type="application/pdf"
-    width="100%"
-    height="100%"
-  >
-    <iframe
-      src={file.url}
-      width="100%"
-      height="100%"
-      title="PDF Viewer"
-      style={{ border: "none" }}
-    >
-      This browser does not support PDFs. Please download the file to view it.
-    </iframe>
-  </object>
+          <iframe
+                                            src={`https://docs.google.com/gview?url=${encodeURIComponent(file.url)}&embedded=true`}
+                                            width="100%"
+                                            height="100%"
+                                            title="PDF Viewer"
+                                            style={{ border: "none" }}
+                                        >
+                                            This browser does not support PDFs. Please download the file to view it.
+                                        </iframe>
                                     ) : (
                                         <Typography
                                             variant="body2"
