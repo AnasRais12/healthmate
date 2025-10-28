@@ -76,6 +76,7 @@ export const googleUser = createAsyncThunk(
                 }
 
             );
+            console.log(data, "google user data");
             await dispatch(getVitalsService({ userId: data?.user?._id }))
             await dispatch(getFilesService({ userId: data?.user?._id }))
             return data

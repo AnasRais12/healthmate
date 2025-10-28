@@ -24,7 +24,7 @@ const page = () => {
       if (session?.data?.user) {
         setLoading(true)
         try {
-          await dispatch(googleUser({ email: session?.data?.user?.email }))
+          await dispatch(googleUser({ email: session?.data?.user?.email,username:session?.data?.user?.name,avatar:session?.data?.user?.image }))
 
         } finally {
           setLoading(false)

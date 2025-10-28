@@ -23,7 +23,7 @@ export const SignIn = () => {
     return <ForgotPassword setForgetPasswordModal={setForgetPasswordModal} />
   }
   return (
-    <Authlayout formFields={LoginFields} schemas={signInSchema} loading={loading} authVariant={"signIn"} backgroundImage={"/assests/authBackgroundImage/Login.avif"} onSubmit={onSubmit} setForgetPasswordModal={setForgetPasswordModal} forgetPasswordModal={forgetPasswordModal} heading={'Welcome Back'} subHeading={'Its Great To See You Again'} submitButtonText={'Login'} />
+    <Authlayout formFields={LoginFields} schemas={signInSchema} loading={loading} authVariant={"signIn"} backgroundImage={"/assets/authBackgroundImage/Login.avif"} onSubmit={onSubmit} setForgetPasswordModal={setForgetPasswordModal} forgetPasswordModal={forgetPasswordModal} heading={'Welcome Back'} subHeading={'Its Great To See You Again'} submitButtonText={'Login'} />
   );
 };
 

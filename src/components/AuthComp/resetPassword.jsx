@@ -31,7 +31,7 @@ export default function ResetPassword() {
     };
 
     return (
-        <Authlayout formFields={resetPasswordFields} schemas={resetPasswordschema} loading={loading} authVariant={"resetPassword"} backgroundImage={"/assests/authBackgroundImage/resetPassword.jpg"} onSubmit={onSubmit} heading={'Reset Your Password'} subHeading={''} submitButtonText={'Reset Password'} bottomLinkText={"Back to sign In"} />
+        <Authlayout formFields={resetPasswordFields} schemas={resetPasswordschema} loading={loading} authVariant={"resetPassword"} backgroundImage={"/assets/authBackgroundImage/resetPassword.jpg"} onSubmit={onSubmit} heading={'Reset Your Password'} subHeading={''} submitButtonText={'Reset Password'} bottomLinkText={"Back to sign In"} />
 
 
     );

@@ -122,9 +122,11 @@ function Authlayout({ formFields = [], schemas, loading, authVariant, background
                     justifyContent: 'center',
                     alignItems: { xs: 'flex-start', sm: 'center' },
                     px: { xs: 0, sm: 6, md: 8, lg: 0 },
-                    py: { xs: 0, sm: 6 },
+                    py: { xs: 6, sm: 6 },
+                    pt: { xs: '50px' , md: '100px', lg: authVariant == "signUp" ?  '200px' : '100px' },
+
                     overflowY: { xs: 'auto', lg: 'auto' },
-                    height: { xs: 'auto', lg: '100vh' },
+                    height: { xs: 'auto', sm: '100vh' },
                 }}
             >
                 <Paper

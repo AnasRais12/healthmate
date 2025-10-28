@@ -62,7 +62,7 @@ export const ForgotPassword = ({ setForgetPasswordModal }) => {
 
   return (
 
-    <Authlayout formFields={ForgetPasswordFields} schemas={forgetSchema} loading={loading} authVariant={"forgetPassword"} backgroundImage={"/assests/authBackgroundImage/forgetPassword.jpg"} onSubmit={onSubmit} heading={'Forget Password'} subHeading={'We Provide A Link In Your email '} submitButtonText={'Send'} bottomLinkText={"Back to sign in"} setForgetPasswordModal={setForgetPasswordModal} />
+    <Authlayout formFields={ForgetPasswordFields} schemas={forgetSchema} loading={loading} authVariant={"forgetPassword"} backgroundImage={"/assets/authBackgroundImage/forgetPassword.jpg"} onSubmit={onSubmit} heading={'Forget Password'} subHeading={'We Provide A Link In Your email '} submitButtonText={'Send'} bottomLinkText={"Back to sign in"} setForgetPasswordModal={setForgetPasswordModal} />
   );
 };
 

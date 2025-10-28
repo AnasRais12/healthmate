@@ -24,7 +24,7 @@ export const Signup = () => {
         handleSubmit({ email, password, username })
     }
     return (
-        <Authlayout formFields={SignUpFields} schemas={signUpSchema} loading={loading} authVariant={"signUp"} backgroundImage={"/assests/authBackgroundImage/Login.avif"} onSubmit={onSubmit} heading={'Create an account'} subHeading={"Let's create your account."} submitButtonText={'Create Account'} />
+        <Authlayout formFields={SignUpFields} schemas={signUpSchema} loading={loading} authVariant={"signUp"} backgroundImage={"/assets/authBackgroundImage/Login.avif"} onSubmit={onSubmit} heading={'Create an account'} subHeading={"Let's create your account."} submitButtonText={'Create Account'} />
 
 
     )
