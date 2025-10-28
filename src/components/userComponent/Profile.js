@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { ProfileFormSchema } from '@/validation/FormSchema';
+import { signOut} from "next-auth/react";
 import { ProfileSettings } from '@/constant/formField';
 import { Alert, Avatar, Box, Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import { useAppUtils, useReactFormUtils, useReduxState } from '@/hooks/useAppUtils';
@@ -79,18 +80,21 @@ export const ProfileSetting = () => {
             handleForm({ ...data, userId: userInfo?.id, });
         }
     };
-    const handleLogout = () => {
-              localStorage.removeItem("token");
+const handleLogout = async () => {
+  await signOut({ redirect: false }); // 👈 prevents auto redirect
+
+  localStorage.removeItem("token");
   localStorage.removeItem("persist:root");
-  Cookies.remove("role")
-  AlertModal({
+  Cookies.remove("role");
+
+  await AlertModal({
     icon: 'success',
     title: 'Logged Out',
     text: 'You have been logged out successfully.',
     buttonText: 'Ok',
   });
+
   router.push('/signin');
-       
 };
 
     return (
