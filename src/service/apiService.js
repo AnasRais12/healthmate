@@ -1,6 +1,7 @@
 export const postApiCall = {
   authFlow: {
     signIn: `/api/v1/users/login`,
+       googleLogin: `/api/v1/users/googleLogin`,
     signUp: `/api/v1/users/signup`,
     verification: `/api/v1/users/verify`,
     resend: `/api/v1/users/resend`,
