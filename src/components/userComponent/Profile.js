@@ -19,7 +19,7 @@ export const ProfileSetting = () => {
     const { dispatch, theme,router   } = useAppUtils()
     const { register, handleSubmit, control, errors, isValid, reset } = useReactFormUtils(ProfileFormSchema);
     const { loading, handleSubmit: handleForm, } = useFormHandler({
-        apiFunction: ({ username, email, selectedImage }) => dispatch(updateProfile({ username, email, selectedImage })),
+        apiFunction: ({ username, email, selectedImage }) => dispatch(updateProfile({ username, email, selectedImage,provider:userInfo?.provider })),
         successMessage: { title: 'User Update', text: 'User Updated Successfully', buttonText: 'Ok', },
         onSuccess: () => { setUserSettingState((prev) => ({ ...prev, isEditing: false })); },
     });
