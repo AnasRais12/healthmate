@@ -90,12 +90,15 @@ export const googleUser = createAsyncThunk(
 
 export const updateProfile = createAsyncThunk(
     "user/updateProfile",
-    async ({ email, username, selectedImage }) => {
+    async ({ email, username, selectedImage,provider }) => {
         const formData = new FormData();
         formData.append("email", email);
         formData.append("username", username);
         if (selectedImage) {
             formData.append("avatar", selectedImage); // backend field name
+        }
+          if (provider) {
+            formData.append("provider", provider); // backend field name
         }
 
         let payload;
