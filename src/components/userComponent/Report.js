@@ -44,7 +44,7 @@ export default function UploadReport() {
    useEffect(() => {
     let timer;
     if (loading) {
-      timer = setTimeout(() => setShowMessage(true), 2000); // 2 sec baad message show
+      timer = setTimeout(() => setShowMessage(true), 4000); 
     } else {
       setShowMessage(false); 
     }
@@ -220,7 +220,7 @@ export default function UploadReport() {
                                              {showMessage ? (
                                             <>
                                              <Fade in={showMessage}>
-            <Box component="span">Generating your report, please wait...</Box>
+            <Box component="span">AI is generating the response for your report, Please wait...</Box>
           </Fade>
                                             </>
                                         ) : <CSpinner size={20} /> }
