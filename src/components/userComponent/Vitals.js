@@ -241,7 +241,7 @@ export default function Vitals() {
 
 
                                             <Button disabled={!isValid} type="submit" variant="contained" size="large">
-                                                {editLoading ? <CSpinner /> : "Edit Vital"}
+                                                {editLoading ? <CSpinner /> : "Save Changes"}
                                             </Button>
 
 

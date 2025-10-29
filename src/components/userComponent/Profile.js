@@ -41,13 +41,10 @@ export const ProfileSetting = () => {
                     };
             case "email":
                 return UserSettingStates.isEditing
-                    ? { ...field,  defaultValue: userInfo?.email || "Not Set" }
-                    : {
-  ...field,
-  ...(session?.data?.user
-    ? { fixedValue: userInfo?.email || "Not Set" }
-    : { defaultValue: userInfo?.email || "Not Set" })
-};
+                    ? { ...field, ...(userInfo?.provider === "google" ? { fixedValue: userInfo?.email || "Not Set" } : { defaultValue: userInfo?.email || "Not Set" }) } :  {
+                        ...field, fixedValue: userInfo?.email || "Not Set"
+                    };
+ 
 
             default:
                 return field;

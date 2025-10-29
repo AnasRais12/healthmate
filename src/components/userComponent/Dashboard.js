@@ -19,7 +19,7 @@ import { getTimeDifference } from '@/helpers/Common';
 
 export default function Dashboard() {
     const [loading, setLoading] = useState(false);
-    const { reportData, vitalData } = useReduxState();
+    const { reportData, vitalData,userInfo } = useReduxState();
     const combined = [...vitalData, ...reportData].sort(
         (a, b) => new Date(b.date) - new Date(a.date)
     );
@@ -128,6 +128,8 @@ export default function Dashboard() {
         },
     ];
 
+    console.log(userInfo,"userInfo---")
+
     return (
         <SidebarWrapper headerText="HealthMate Dashboard">
             <Box
@@ -160,11 +162,13 @@ export default function Dashboard() {
                                 : 'No Data',
                         },
     {
-                            label: `Last Vital`,
-                            value: `
-                              ${combined[0]?.type === "Vitals"
-                                    ? "Manual Vitals"
-                                    : "No vital records available"}`
+                            label: `Latest ${combined.length === 0 ? "Activity" : combined[0]?.aiInsightId ? 'AI Insight' : 'Vital'}`,
+                          value:
+  combined.length === 0
+    ? "No activity yet"
+    : combined[0]?.aiInsightId
+    ? `${combined[0]?.reportType}`
+    : "Manual Vital"
                         },
                     ].map((item, i) => (
                         <Card
@@ -184,11 +188,11 @@ export default function Dashboard() {
                             <CardContent>
                                 <Typography
                                     variant="subtitle1"
-                                    sx={{ mb: 1, fontWeight: 600, color: 'green' }}
+                                    sx={{ mb: 1, fontWeight: 500, color: 'green' }}
                                 >
                                     {item.label}
                                 </Typography>
-                                <Typography variant="h6" color="text.primary">
+                                <Typography variant="h6" color="text.primary"sx={{fontWeight:"700"}}>
                                     {item.value}
                                 </Typography>
                             </CardContent>

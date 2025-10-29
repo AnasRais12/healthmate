@@ -8,6 +8,7 @@ import {
     Button,
     Box,
     IconButton,
+    Fade,
 } from "@mui/material";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { AddReport } from "@/constant/formField";
@@ -28,7 +29,9 @@ export default function UploadReport() {
     const { userInfo, reportData } = useReduxState()
     const { dispatch, theme, router } = useAppUtils()
     const [showUploadReportForm, setShowUploadReportForm] = useState(false)
-
+      const [showMessage, setShowMessage] = useState(false);
+ const [file, setFile] = useState(null);
+    const [previewUrl, setPreviewUrl] = useState("");
     const { register, control, errors, isValid, handleSubmit, reset } = useReactFormUtils(AddReportSchema)
     const { loading, handleSubmit: handleForm, } = useFormHandler({
         apiFunction: (data) =>
@@ -38,8 +41,16 @@ export default function UploadReport() {
 
 
     });
-    const [file, setFile] = useState(null);
-    const [previewUrl, setPreviewUrl] = useState("");
+   useEffect(() => {
+    let timer;
+    if (loading) {
+      timer = setTimeout(() => setShowMessage(true), 2000); // 2 sec baad message show
+    } else {
+      setShowMessage(false); 
+    }
+
+    return () => clearTimeout(timer);
+  }, [loading]);
 
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
@@ -51,7 +62,14 @@ export default function UploadReport() {
         }
     };
     const handleFormSubmit = (data,) => {
+        try{
         handleForm(data, reset)
+
+        }
+        finally{
+            setFile(null);
+            setPreviewUrl("");
+        }
     }
 
 
@@ -197,7 +215,20 @@ export default function UploadReport() {
 
 
                                     <Button disabled={!isValid} type="submit" variant="contained" size="large">
-                                        {loading ? <CSpinner /> : "Upload Report"}
+                                        {loading ? (
+                                            <>
+                                             {showMessage ? (
+                                            <>
+                                             <Fade in={showMessage}>
+            <Box component="span">Generating your report, please wait...</Box>
+          </Fade>
+                                            </>
+                                        ) : <CSpinner size={20} /> }
+                                            </>
+                                        ): "Upload Report"}
+                                       
+                                          
+         
                                     </Button>
                                 </Box>
                             </Stack>

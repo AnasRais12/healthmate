@@ -69,14 +69,14 @@ export const googleUser = createAsyncThunk(
                 { email,username,avatar },
                 (resData) => {
                     if (resData?.data?.user || resData?.data?.token) {
-                        data = { user: resData?.data?.user, token: resData?.data?.token }
+                        data = { user: {...resData?.data?.user,provider:"google" }, token: resData?.data?.token,}
                         Cookies.set('role', resData?.data?.user?.role, { expires: 7 });
                         localStorage.setItem('token', resData?.data?.token);
                     }
                 }
 
             );
-            console.log(data, "google user data");
+        
             await dispatch(getVitalsService({ userId: data?.user?._id }))
             await dispatch(getFilesService({ userId: data?.user?._id }))
             return data

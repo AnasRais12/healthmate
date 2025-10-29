@@ -61,17 +61,17 @@ export default function Timeline() {
                                             <Typography variant="body2" color="text.primary">
                                                 {new Date(item.date).toLocaleDateString("en-GB")}
                                             </Typography>
-                                            <Typography onClick={() => isReport ? router.push('/report') : router.push('/vitals')}
+                                            <Typography onClick={() => item?.aiInsightId ? router.push('/report') : router.push('/vitals')}
                                                 variant="subtitle2"
                                                 color={isReport ? "green" : "green"}
                                                 sx={{ fontWeight: 600, cursor: "pointer" }}
                                             >
-                                                {isReport ? "AI Report" : "Vitals"}
+                                                {item?.aiInsightId  ? "AI Report" : "Vitals"}
                                             </Typography>
                                         </Stack>
 
                                         {/* Content */}
-                                        {isReport ? (
+                                        {item?.aiInsightId  ? (
                                             <>
                                                 <Typography mb={2} variant="subtitle2" fontWeight={600}>
                                                     {item.filename || "Report"}
